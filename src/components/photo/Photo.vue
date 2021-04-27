@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   props: {
     photo: {
@@ -19,8 +20,13 @@ export default {
   },
   methods: {
     openPhoto() {
-      this.$emit("openPhoto", this.photo);
+      // this.$emit("openPhoto", this.photo);
+      // this.$store.commit("setCurrentPhoto", this.photo);
+      // this.$store.commit("showDialog");
+      this.setCurrentPhoto(this.photo)
+      this.showDialog();
     },
+    ...mapMutations(["setCurrentPhoto", "showDialog", "hideDialog"])
   },
 };
 </script>
